@@ -1,0 +1,177 @@
+ <!DOCTYPE>
+ <html>
+
+     <head>
+         <meta charset="utf-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <title>Page Title</title>
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <!--<link rel="stylesheet" href="./main.css">-->
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+             crossorigin="anonymous">
+     </head>
+
+     <body>
+         <div class="d-flex justify-content-center">
+             <div class="jumbotron col-sm-12">
+                 <h1 class="display-4 d-flex justify-content-center" id="survey-header">Find a Friend in No Time!</h1>
+             </div>
+         </div>
+         <form id="survey-form" method="POST" action="/api/friends">
+             <div class="form-group col-6 offset-3">
+                 <label for="name">Name</label>
+                 <input type="text" class="form-control" id="name" placeholder="Example input">
+             </div>
+             </br>
+             <div class="form-group col-6 offset-3">
+                 <label for="image">Example file input</label>
+                 <input type="file" class="form-control-file" id="image">
+             </div>
+             </br>
+             <div class="form-group col-6 offset-3">
+                 <label for="question1">I enjoy meeting new people</label>
+                 <select class="form-control" id="question1">
+                     <option value=5>Strongly Agree</option>
+                     <option value=4>Agree</option>
+                     <option value=3>Neutral</option>
+                     <option value=2>Disagree</option>
+                     <option value=1>Strongly Disagree</option>
+                 </select>
+                 </br>
+                 <label for="question2">I like helping people</label>
+                 <select class="form-control" id="question2">
+                     <option value=5>Strongly Agree</option>
+                     <option value=4>Agree</option>
+                     <option value=3>Neutral</option>
+                     <option value=2>Disagree</option>
+                     <option value=1>Strongly Disagree</option>
+                 </select>
+                 </br>
+                 <label for="exampleFormControlSelect1">I conceal my feelings</label>
+                 <select class="form-control" id="question3">
+                     <option value=5>Strongly Agree</option>
+                     <option value=4>Agree</option>
+                     <option value=3>Neutral</option>
+                     <option value=2>Disagree</option>
+                     <option value=1>Strongly Disagree</option>
+                 </select>
+                 </br>
+                 <label for="exampleFormControlSelect1">I am confident before big events</label>
+                 <select class="form-control" id="question4">
+                     <option value=5>Strongly Agree</option>
+                     <option value=4>Agree</option>
+                     <option value=3>Neutral</option>
+                     <option value=2>Disagree</option>
+                     <option value=1>Strongly Disagree</option>
+                 </select>
+                 </br>
+                 <label for="exampleFormControlSelect1">I enjoy setting long term goals</label>
+                 <select class="form-control" id="question5">
+                     <option value=5>Strongly Agree</option>
+                     <option value=4>Agree</option>
+                     <option value=3>Neutral</option>
+                     <option value=2>Disagree</option>
+                     <option value=1>Strongly Disagree</option>
+                 </select>
+                 </br>
+                 <label for="exampleFormControlSelect1">I expect a lot from the people I am closest to</label>
+                 <select class="form-control" id="question6">
+                     <option value=5>Strongly Agree</option>
+                     <option value=4>Agree</option>
+                     <option value=3>Neutral</option>
+                     <option value=2>Disagree</option>
+                     <option value=1>Strongly Disagree</option>
+                 </select>
+                 </br>
+                 <label for="exampleFormControlSelect1">I love physical touch</label>
+                 <select class="form-control" id="question7">
+                     <option value=5>Strongly Agree</option>
+                     <option value=4>Agree</option>
+                     <option value=3>Neutral</option>
+                     <option value=2>Disagree</option>
+                     <option value=1>Strongly Disagree</option>
+                 </select>
+                 </br>
+                 <label for="exampleFormControlSelect1">I am a night owl</label>
+                 <select class="form-control" id="question8">
+                     <option value=5>Strongly Agree</option>
+                     <option value=4>Agree</option>
+                     <option value=3>Neutral</option>
+                     <option value=2>Disagree</option>
+                     <option value=1>Strongly Disagree</option>
+                 </select>
+                 </br>
+                 <label for="exampleFormControlSelect1">I like trying new activities</label>
+                 <select class="form-control" id="question9">
+                     <option value=5>Strongly Agree</option>
+                     <option value=4>Agree</option>
+                     <option value=3>Neutral</option>
+                     <option value=2>Disagree</option>
+                     <option value=1>Strongly Disagree</option>
+                 </select>
+                 </br>
+                 <label for="exampleFormControlSelect1">I would rather be out of the house than stay in for the
+                     night</label>
+                 <select class="form-control" id="question10">
+                     <option value=5>Strongly Agree</option>
+                     <option value=4>Agree</option>
+                     <option value=3>Neutral</option>
+                     <option value=2>Disagree</option>
+                     <option value=1>Strongly Disagree</option>
+                 </select>
+                 <!--</br>
+                 <label for="exampleFormControlSelect1">I would rather build relationships than build my career</label>
+                 <select class="form-control" id="career">
+                     <option value=5>Strongly Agree</option>
+                     <option value=4>Agree</option>
+                     <option value=3>Neutral</option>
+                     <option value=2>Disagree</option>
+                     <option value=1>Strongly Disagree</option>
+                 </select>
+                 </br>
+                 <label for="exampleFormControlSelect1">I frequently talk to people on the phone</label>
+                 <select class="form-control" id="phone">
+                     <option value=5>Strongly Agree</option>
+                     <option value=4>Agree</option>
+                     <option value=3>Neutral</option>
+                     <option value=2>Disagree</option>
+                     <option value=1>Strongly Disagree</option>
+                 </select>-->
+                 </br>
+             </div>
+             <button type="submit" id="form-submit" class="btn btn-primary col-6 offset-3">Submit</button>
+         </form>
+         <script src="https://code.jquery.com/jquery-3.4.1.js"
+             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+         <script type="text/javascript">
+             //format the form in an object
+             $("#form-submit").on("click", function (event) {
+                 event.preventDefault();
+                 var newFriend = {
+                     name: $("#name").val().trim(),
+                     image: $("#image").val().trim(),
+                     scores: [$("#question1").val().trim(),
+                         $("#question2").val().trim(), $("#question2").val().trim(), $("#question3")
+                         .val().trim(),
+                         $("#question4").val().trim(), $("#question5").val().trim(), $("#question6")
+                         .val().trim(),
+                         $("#question7").val().trim(), $("#question8").val().trim(), $("#question9")
+                         .val().trim(),
+                         $("#question10").val().trim()
+                     ]
+                 };
+                 //console.log(newFriend);
+
+                 // run the post request using the newFriend variable as the req.body
+                 $.post("/api/friends", newFriend)
+                     .then(function (data) {
+                         console.log("add.html", data);
+                         alert("Adding character...");
+                     });
+             });
+         </script>
+
+     </body>
+
+ </html>
