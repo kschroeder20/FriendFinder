@@ -10,6 +10,7 @@
          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
              crossorigin="anonymous">
+         </body>
      </head>
 
      <body>
@@ -21,12 +22,13 @@
          <form id="survey-form" method="POST" action="/api/friends">
              <div class="form-group col-6 offset-3">
                  <label for="name">Name</label>
-                 <input type="text" class="form-control" id="name" placeholder="Example input">
+                 <input type="text" class="form-control" id="name" placeholder='"John Doe"' required>
              </div>
              </br>
              <div class="form-group col-6 offset-3">
-                 <label for="image">Example file input</label>
-                 <input type="file" class="form-control-file" id="image">
+                 <label for="image">Link to image (must be taken from online source like LinkedIn or Facebook)</label>
+                 <input type="text" class="form-control" id="image" placeholder="https://media.licdn.com/dms/image/..."
+                     required>
              </div>
              </br>
              <div class="form-group col-6 offset-3">
@@ -140,35 +142,86 @@
                  </select>-->
                  </br>
              </div>
-             <button type="submit" id="form-submit" class="btn btn-primary col-6 offset-3">Submit</button>
-         </form>
+             <!-- Button trigger modal -->
+             <button type="submit" id="form-submit" class=" btn btn-primary col-6 offset-3" data-toggle="modal"
+                 data-target="#results-modal">
+                 Submit
+             </button>
+             </form>
+
+             <!-- Modal -->
+             <div class="modal fade" id="results-modal" tabindex="-1" role="dialog" aria-labelledby="results-modal"
+                 aria-hidden="true">
+                 <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h5 class="modal-title" id="modal-title"></h5>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
+                         </div>
+                         <div class="modal-body">
+                             <img id="friend-pic">
+                         </div>
+                         <div class="modal-footer">
+                             <form id="modal-button-form" method="GET" action="/contact">
+                                 <button type="submit" class="btn btn-primary" id="contact-info-btn">See Contact
+                                     Information</button>
+                             </form>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
          <script src="https://code.jquery.com/jquery-3.4.1.js"
              integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+             integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+             crossorigin="anonymous">
+         </script>
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+             crossorigin="anonymous">
+         </script>
          <script type="text/javascript">
              //format the form in an object
              $("#form-submit").on("click", function (event) {
-                 event.preventDefault();
-                 var newFriend = {
-                     name: $("#name").val().trim(),
-                     image: $("#image").val().trim(),
-                     scores: [$("#question1").val().trim(),
-                         $("#question2").val().trim(), $("#question2").val().trim(), $("#question3")
-                         .val().trim(),
-                         $("#question4").val().trim(), $("#question5").val().trim(), $("#question6")
-                         .val().trim(),
-                         $("#question7").val().trim(), $("#question8").val().trim(), $("#question9")
-                         .val().trim(),
-                         $("#question10").val().trim()
-                     ]
-                 };
-                 //console.log(newFriend);
+                 $("#name").removeClass("is-invalid");
+                 $("#image").removeClass("is-invalid");
+                 if ($("#name").val().trim() !== "" && $("#image").val().trim() !== "") {
+                     event.preventDefault();
+                     var newFriend = {
+                         name: $("#name").val().trim(),
+                         image: $("#image").val().trim(),
+                         scores: [$("#question1").val().trim(),
+                             $("#question2").val().trim(), $("#question2").val().trim(), $("#question3")
+                             .val().trim(),
+                             $("#question4").val().trim(), $("#question5").val().trim(), $("#question6")
+                             .val().trim(),
+                             $("#question7").val().trim(), $("#question8").val().trim(), $("#question9")
+                             .val().trim(),
+                             $("#question10").val().trim()
+                         ]
+                     };
+                     // run the post request using the newFriend variable as the req.body
+                     $.post("/api/friends", newFriend)
+                         .then(function (data) {
+                             console.log(data);
+                             $("#modal-title").text(`Your new friend is ${data.name}`);
+                             $("#friend-pic").attr({
+                                 "src": `${data.image}`,
+                                 "width": "200px"
+                             });
+                         });
+                 } else {
+                     $("#modal-title").text(`Please enter a valid name and image`);
+                     $("#name").addClass("is-invalid");
+                     $("#image").addClass("is-invalid");
+                 }
+             });
 
-                 // run the post request using the newFriend variable as the req.body
-                 $.post("/api/friends", newFriend)
-                     .then(function (data) {
-                         console.log("add.html", data);
-                         alert("Adding character...");
-                     });
+             $("#contact-info-btn").on("click", function (event) {
+
              });
          </script>
 

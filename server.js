@@ -30,19 +30,41 @@ app.get('/api/friends', (req, res, next) => {
 app.post("/api/friends", function (req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
-    var newfriend = req.body;
+    var newFriend = req.body;
+
+    for (let i = 0; i < newFriend.scores.length; i++) {
+        newFriend.scores[i] = parseInt(newFriend.scores[i]);
+    }
 
     // Using a RegEx Pattern to remove spaces from newCharacter
     // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-    newfriend.routeName = newfriend.name.replace(/\s+/g, "").toLowerCase();
+    newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase();
 
-    //console.log(newfriend);
 
-    members.push(newfriend);
 
-    res.json(newfriend);
+    var matchedFriend = {};
+    var winningCount = 50;
 
-    console.log(members);
+    members.forEach(function (element) {
+        let counter = 0;
+        for (let i = 0; i < element.scores.length; i++) {
+            counter += Math.abs(newFriend.scores[i] - element.scores[i]);
+        }
+        //console.log(counter);
+        if (winningCount > counter) {
+            winningCount = counter;
+            matchedFriend = element;
+        }
+        //console.log(element);
+        //console.log(matchedFriend);
+    });
+
+    members.push(newFriend);
+    res.json(matchedFriend);
+});
+
+app.get("/contact", function (req, res) {
+    res.sendFile(path.join(__dirname, "/app/public/contact.html"));
 });
 
 
