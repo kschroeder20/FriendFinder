@@ -1,12 +1,10 @@
- <!DOCTYPE>
- <html>
+<!DOCTYPE html>
 
      <head>
          <meta charset="utf-8">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
-         <title>Page Title</title>
+         <title>Survey</title>
          <meta name="viewport" content="width=device-width, initial-scale=1">
-         <!--<link rel="stylesheet" href="./main.css">-->
          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
              crossorigin="anonymous">
@@ -20,18 +18,18 @@
              </div>
          </div>
          <form id="survey-form" method="POST" action="/api/friends">
-             <div class="form-group col-6 offset-3">
+             <div class="form-group col-sm-6 offset-sm-3">
                  <label for="name">Name</label>
                  <input type="text" class="form-control" id="name" placeholder='"John Doe"' required>
              </div>
              </br>
-             <div class="form-group col-6 offset-3">
+             <div class="form-group col-sm-6 offset-sm-3">
                  <label for="image">Link to image (must be taken from online source like LinkedIn or Facebook)</label>
                  <input type="text" class="form-control" id="image" placeholder="https://media.licdn.com/dms/image/..."
                      required>
              </div>
              </br>
-             <div class="form-group col-6 offset-3">
+             <div class="form-group col-sm-6 offset-sm-3">
                  <label for="question1">I enjoy meeting new people</label>
                  <select class="form-control" id="question1">
                      <option value=5>Strongly Agree</option>
@@ -122,24 +120,6 @@
                      <option value=2>Disagree</option>
                      <option value=1>Strongly Disagree</option>
                  </select>
-                 <!--</br>
-                 <label for="exampleFormControlSelect1">I would rather build relationships than build my career</label>
-                 <select class="form-control" id="career">
-                     <option value=5>Strongly Agree</option>
-                     <option value=4>Agree</option>
-                     <option value=3>Neutral</option>
-                     <option value=2>Disagree</option>
-                     <option value=1>Strongly Disagree</option>
-                 </select>
-                 </br>
-                 <label for="exampleFormControlSelect1">I frequently talk to people on the phone</label>
-                 <select class="form-control" id="phone">
-                     <option value=5>Strongly Agree</option>
-                     <option value=4>Agree</option>
-                     <option value=3>Neutral</option>
-                     <option value=2>Disagree</option>
-                     <option value=1>Strongly Disagree</option>
-                 </select>-->
                  </br>
              </div>
              <!-- Button trigger modal -->

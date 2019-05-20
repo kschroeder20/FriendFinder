@@ -1,19 +1,17 @@
-// Sets up the Express App
-// =============================================================
-var app = express();
-var PORT = 3000;
+const path = require("path");
 
-// Sets up the Express app to handle data parsing
-app.use(express.urlencoded({
-    extended: true
-}));
-app.use(express.json());
+//Routing
+module.exports = function (app) {
 
+    app.get("/survey", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/survey.html"));
+    });
 
-app.get("/survey", function (req, res) {
-    res.sendFile(path.join(__dirname, "/app/public/survey.html"));
-});
+    app.get("/contact", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/contact.html"));
+    });
 
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "/app/public/home.html"));
-});
+    app.get("*", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/home.html"));
+    });
+}
